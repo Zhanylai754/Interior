@@ -1,0 +1,963 @@
+﻿<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+	<meta charset="utf-8" />
+
+	<style id="style-global">
+		@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			outline: none;
+		}
+
+		html, body {
+			overflow: hidden;
+			width: 100vw;
+			min-width: 40rem;
+			height: 100vh;
+			font-family: 'Raleway', sans-serif;
+			font-size: 20px;
+		}
+
+		ul {
+			list-style: none
+		}
+
+		a {
+			text-decoration: none
+		}
+
+		h1, h2, h4 {
+			overflow: hidden;
+			text-transform: uppercase;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		h2, h4 {
+			color: #a19492
+		}
+
+		h2 {
+			font-size: 1.5rem
+		}
+
+		h4 {
+			font-size: 0.85rem
+		}
+
+		h2, p {
+			font-weight: 400
+		}
+
+		p {
+			margin-top: 2rem;
+			text-shadow: 0.03em 0.03em 0.03em rgba(0,0,0,0.02);
+			line-height: 1.8em;
+			color: #716962;
+		}
+	</style>
+
+	<style id="style-block">
+		img, .block {
+			display: block
+		}
+
+		.clear {
+			clear: both
+		}
+
+		.left {
+			float: left
+		}
+
+		.right {
+			float: right
+		}
+
+		.wrapper, .holder {
+			overflow: hidden
+		}
+	</style>
+
+	<style id="style-width">
+		.w100 {
+			width: 100%
+		}
+
+		.w20 {
+			width: 20%
+		}
+
+		.w25 {
+			width: 25%
+		}
+
+		.w30 {
+			width: 30%
+		}
+
+		.w33 {
+			width: calc(100% / 3)
+		}
+
+		.w40 {
+			width: 40%
+		}
+
+		.w50 {
+			width: 50%
+		}
+
+		.w60 {
+			width: 60%
+		}
+
+		.w70 {
+			width: 70%
+		}
+
+		.w75 {
+			width: 75%
+		}
+	</style>
+
+	<style id="style-margin">
+		.mh-a {
+			margin-left: auto;
+			margin-right: auto
+		}
+
+		.mt-0 {
+			margin-top: 0
+		}
+
+		.ml-a {
+			margin-left: auto
+		}
+
+		.mt-10, .mv-10 {
+			margin-top: 1rem
+		}
+
+		.mb-10, .mv-10 {
+			margin-bottom: 1rem
+		}
+
+		.mb-20 {
+			margin-bottom: 2rem
+		}
+
+		.ma-0 {
+			margin: 0
+		}
+	</style>
+
+	<style id="style-padding">
+		.pt-0, .pa-0, .pv-0 {
+			padding-top: 0
+		}
+
+		.pl-0, .pa-0, .ph-0 {
+			padding-left: 0
+		}
+
+		.pr-0, .pa-0, .ph-0 {
+			padding-right: 0
+		}
+
+		.pb-0, .pa-0, .pv-0 {
+			padding-bottom: 0
+		}
+
+		.pt-5p, .pv-5p, .pa-5p {
+			padding-top: 5%
+		}
+
+		.pb-5p, .pv-5p, .pa-5p {
+			padding-bottom: 5%
+		}
+
+		.pl-5p, .ph-5p, .pa-5p {
+			padding-left: 5%
+		}
+
+		.pr-5p, .ph-5p, .pa-5p {
+			padding-right: 5%
+		}
+
+		.pt-10p, .pv-10p {
+			padding-top: 10%
+		}
+
+		.pb-10p, .pv-10p {
+			padding-bottom: 10%
+		}
+
+		.pl-10p, .ph-10p {
+			padding-left: 10%
+		}
+
+		.pr-10p, .ph-10p {
+			padding-right: 10%
+		}
+
+		.pb-10p, .pv-10p {
+			padding-bottom: 10%
+		}
+
+		.pt-20p, .pv-20p, .pa-20p {
+			padding-top: 20%
+		}
+
+		.pb-20p, .pv-20p, .pa-20p {
+			padding-bottom: 20%
+		}
+
+		.pt-05, .pv-05 {
+			padding-top: 0.5rem
+		}
+
+		.pt-10, .pv-10 {
+			padding-top: 1rem
+		}
+
+		.pb-05, .pv-05 {
+			padding-bottom: 0.5rem
+		}
+
+		.pb-10, .pv-10 {
+			padding-bottom: 1rem
+		}
+
+		.pl-05, .ph-05 {
+			padding-left: 0.5rem
+		}
+
+		.pr-05, .ph-05 {
+			padding-right: 0.5rem
+		}
+	</style>
+
+	<style id="style-font-size">
+		.fs-85 {
+			font-size: 0.85rem
+		}
+
+		.fs-80 {
+			font-size: 0.8rem
+		}
+
+		.fs-75 {
+			font-size: 0.75rem
+		}
+
+		.fs-70 {
+			font-size: 0.7rem
+		}
+	</style>
+
+	<style id="style-font-weight">
+		.fw-3 {
+			font-weight: 300
+		}
+
+		.fw-4 {
+			font-weight: 400
+		}
+
+		.fw-5 {
+			font-weight: 500
+		}
+
+		.fw-6 {
+			font-weight: 600
+		}
+	</style>
+
+	<style id="style-line-height">
+		.lh-10 {
+			line-height: 1rem
+		}
+
+		.lh-15 {
+			line-height: 1.5em
+		}
+	</style>
+
+	<style id="style-text-align">
+		.ta-c {
+			text-align: center
+		}
+
+		.ta-l {
+			text-align: left
+		}
+
+		.ta-r {
+			text-align: right
+		}
+
+		.ta-j {
+			text-align: justify
+		}
+	</style>
+
+	<style id="style-text-transform">
+		.tt-n {
+			text-transform: none
+		}
+
+		.tt-u {
+			text-transform: uppercase
+		}
+
+		.tt-l {
+			text-transform: lowercase
+		}
+
+		.tt-c {
+			text-transform: capitalize
+		}
+	</style>
+
+	<style id="style-layout">
+		.page-navigator {
+			height: 4rem;
+			background-color: #686b74;
+		}
+
+		.page-wrapper {
+			overflow-x: hidden;
+			overflow-y: auto;
+			height: calc(100% - 4rem);
+			scroll-behavior: smooth;
+		}
+
+		.trio-item .trio-title {
+			padding-top: 5rem;
+			background-position: center top;
+			background-repeat: no-repeat;
+		}
+	</style>
+
+	<title>Interior</title>
+</head>
+<body>
+
+<nav class="page-navigator pv-05 ta-c">
+	<style id="style-main-menu">
+		.main-menu-item:not(.logo) {
+			height: 3rem
+		}
+
+		.main-menu-logo {
+			height: 3rem;
+			width: 3rem;
+			object-fit: contain;
+			object-position: center;
+		}
+
+		.main-menu-link {
+			display: inline-block;
+			padding: 0 0.2em;
+			border-bottom: 0.15em solid transparent;
+			letter-spacing: 0.05em;
+			color: #c1c1c1;
+		}
+
+			.main-menu-link:hover {
+				border-color: #cdbfa1;
+				color: #cdbfa1;
+			}
+	</style>
+	<ul class="main-menu wrapper w75 mh-a fs-85 fw-6 tt-u">
+		<li class="main-menu-item left w20 pv-10 lh-10"><a class="main-menu-link" href="#minimalism">Minimalism</a></li>
+		<li class="main-menu-item left w20 pv-10 lh-10"><a class="main-menu-link" href="#comfort">Comfort</a></li>
+		<li class="main-menu-item left w20 logo"><a href="#home"><img class="main-menu-logo mh-a" src="img/logo.png" alt="Interior Logo" /></a></li>
+		<li class="main-menu-item left w20 pv-10 lh-10"><a class="main-menu-link" href="#luxurious">Luxurious</a></li>
+		<li class="main-menu-item left w20 pv-10 lh-10"><a class="main-menu-link" href="#reinvented-spaces">Spaces</a></li>
+	</ul>
+</nav>
+
+<div class="page-wrapper">
+	<header id="home" class="page-header ta-c tt-u">
+		<style id="style-page-header">
+			.page-header {
+				padding-top: calc((100vh - 4rem - 8rem) / 2 - 3rem);
+				background-image: url(img/banner-01.jpg);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center top;
+				background-attachment: fixed;
+			}
+
+			.page-header-title {
+				color: #fff;
+				font-size: 6rem;
+				line-height: 7rem;
+			}
+
+			.page-header-subtitle,
+			.page-header-link {
+				display: block
+			}
+
+			.page-header-subtitle {
+				padding-bottom: calc((100vh - 4rem - 8rem) / 2);
+				letter-spacing: 0.05em;
+				color: #cdbfa1;
+			}
+
+			.page-header-link {
+				height: 3rem;
+				width: 3rem;
+				background-image: url(img/arrow-01.svg);
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+		</style>
+		<h1 class="page-header-title fw-3">Interior</h1>
+		<span class="page-header-subtitle fs-85 fw-6 lh-10">Start creating today</span>
+		<a class="page-header-link mh-a" href="#trio"></a>
+	</header>
+
+	<nav id="trio">
+		<style id="style-trio">
+			#trio .trio-item.modern {
+				background-color: #bcb7b6
+			}
+
+				#trio .trio-item.modern .trio-title {
+					background-image: url(img/icon-modern.png)
+				}
+
+			#trio .trio-item.handmade {
+				background-color: #f0e9dc
+			}
+
+				#trio .trio-item.handmade .trio-title {
+					background-image: url(img/icon-handmade.png)
+				}
+
+			#trio .trio-item.custom {
+				background-color: #ccc1b8
+			}
+
+				#trio .trio-item.custom .trio-title {
+					background-image: url(img/icon-lighting.png)
+				}
+
+			#trio .trio-text {
+				height: 7.5em
+			}
+
+			#trio .trio-link {
+				height: 1.8rem;
+				width: 1.8rem;
+				border: 0.1rem solid #716962;
+				border-radius: 50%;
+				background-image: url(img/arrow-02.svg);
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+
+				#trio .trio-link:hover {
+					border-color: #fff
+				}
+		</style>
+		<ul class="wrapper ta-c">
+			<li class="trio-item ph-5p pt-5p w33 left modern">
+				<header class="trio-header">
+					<h4 class="trio-title">Modern<br />
+						Interiors</h4>
+				</header>
+				<p class="trio-text mv-10 fs-70 ta-c lh-15">Sed semper quis est non euismod. Maecenas quis posuere sapien. Nunc ullamcorper commodo tempor.</p>
+				<a class="trio-link block mh-a" href="#modern-interiors"></a>
+			</li>
+			<li class="trio-item ph-5p pt-5p w33 left handmade">
+				<header class="trio-header">
+					<h4 class="trio-title">Handmade<br />
+						Furniture</h4>
+				</header>
+				<p class="trio-text mv-10 fs-70 ta-c lh-15">Maecenas elementum, neque vitae pretium placerat, ipsum lorem blandit lectus, ut ornare liberos.</p>
+				<a class="trio-link block mh-a" href="#handmade-furniture"></a>
+			</li>
+			<li class="trio-item ph-5p pt-5p w33 left custom">
+				<header class="trio-header">
+					<h4 class="trio-title">Custom<br />
+						Lighting</h4>
+				</header>
+				<p class="trio-text mv-10 fs-70 ta-c lh-15">Nullam lobortis leo urna, et varius leo placerat ut. Pellentesque malesuada, est at suscipit.</p>
+				<a class="trio-link block mh-a" href="#lighting"></a>
+			</li>
+		</ul>
+		<img class="w100" src="img/banner-02.jpg" />
+	</nav>
+
+	<section id="handmade-furniture" class="wrapper pt-5p pl-5p">
+		<style>
+			#handmade-furniture {
+				background-color: #f0f0f0
+			}
+		</style>
+		<div class="left w50">
+			<header>
+				<h2>Handmade Furniture</h2>
+			</header>
+			<p class="fs-85">
+				Etiam blandit fermentum imperdiet. Quisque commodo nisl est, tempor elementum eros mattis sagittis.
+				Cras id scelerisque urna. Aliquam vehicula fermentum tellus, et dapibus lorem ullamcorper eu.
+				Donec sit amet neque vitae est convallis ultrices. Nulla facilisi. In id gravida nibh.
+				Donec laoreet efficitur quam, vitae ultrices ante varius sed.
+			</p>
+		</div>
+		<img class="right w50" src="img/banner-03.jpg" />
+	</section>
+
+	<section id="minimalism">
+		<style>
+			#minimalism header {
+				background-image: url(img/banner-04.jpg);
+				background-position: center top;
+				background-size: cover;
+			}
+		</style>
+		<header class="pv-10p">
+			<h2 class="ta-c">Minimalism</h2>
+		</header>
+		<div class="w75 pv-5p mh-a fs-85 ta-j">
+			<p class="mt-0">
+				Sed convallis odio quis mauris facilisis, id condimentum enim blandit. Duis interdum vel elit at vestibulum.
+				Maecenas ut dictum nisi. Cras ultrices euismod turpis interdum dignissim. Ut in lectus vitae diam blandit facilisis.
+				Nullam suscipit non ex in viverra. Proin nec felis varius, mollis ex tincidunt, porta quam. Aenean interdum mattis odio id vulputate.
+				Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+				Proin at ligula at mi maximus tincidunt. Ut rhoncus ligula venenatis nibh viverra accumsan.
+				Quisque vel quam enim. Morbi quis ligula sed enim suscipit commodo.
+			</p>
+			<p>
+				Aenean diam nulla, ornare vitae lorem quis, viverra rutrum nisl.
+				Integer iaculis, tellus vitae accumsan eleifend, ex dolor vulputate erat, in varius felis nisl ultrices arcu.
+				Donec finibus convallis nunc. Maecenas at ornare orci, a ultricies odio. Ut ornare ex magna, a pellentesque arcu interdum ac.
+				Pellentesque a suscipit magna. Proin vestibulum tempus velit eu tincidunt. Mauris sit amet ipsum arcu.
+				Maecenas maximus eget lectus in laoreet. Sed id imperdiet dui. Duis in libero vel magna ultricies accumsan.
+				Maecenas placerat lacus sit amet nisl congue, non pulvinar nibh feugiat. Praesent et consectetur nulla.
+			</p>
+		</div>
+	</section>
+
+	<section id="chairs" class="pv-5p ph-10p">
+		<style>
+			#chairs {
+				background-color: #f2f3f5;
+				background-image: url(img/banner-06.jpg);
+				background-repeat: no-repeat;
+				background-size: 50%;
+				background-position: 80% bottom;
+			}
+
+				#chairs .divider {
+					height: 1px;
+					margin: 5% auto;
+					border: none;
+					background-color: #cfd8dc;
+				}
+
+				#chairs .trio-item.blandit .trio-title {
+					background-image: url(img/icon-blandit.svg)
+				}
+
+				#chairs .trio-item.lacinia .trio-title {
+					background-image: url(img/icon-lacinia.svg)
+				}
+
+				#chairs .trio-item.ornare .trio-title {
+					background-image: url(img/icon-ornare.svg)
+				}
+		</style>
+		<ul class="wrapper ta-c">
+			<li class="trio-item w33 ph-5p pt-5p left blandit">
+				<header>
+					<h4 class="trio-title">Curabitur<br />
+						Blandit</h4>
+				</header>
+				<p class="trio-text mv-10 fs-70 ta-c lh-15">
+					Mauris in nisi lacus. Aenean et lectus id arcu ultricies porta.
+					Fusce laoreet placerat sem eget congue.
+					Vivamus pharetra vel felis vel ullamcorper.
+					Nullam fringilla arcu a diam pulvinar tempus.
+				</p>
+			</li>
+			<li class="trio-item w33 ph-5p pt-5p left lacinia">
+				<header>
+					<h4 class="trio-title">Aenean<br />
+						Lacinia</h4>
+				</header>
+				<p class="trio-text mv-10 fs-70 ta-c lh-15">
+					Aenean sagittis metus lacinia, posuere nunc ultrices, faucibus turpis.
+					In tincidunt turpis ut mauris condimentum tempus.
+					Nunc nec gravida felis, sed suscipit elit.
+					Suspendisse fringilla.
+				</p>
+			</li>
+			<li class="trio-item w33 ph-5p pt-5p left ornare">
+				<header>
+					<h4 class="trio-title">Pellente<br />
+						Ornare</h4>
+				</header>
+				<p class="trio-text mv-10 fs-70 ta-c lh-15">
+					Cras id neque porta, viverra quam vulputate, luctus purus.
+					Sed lacinia dolor et orci dictum, viverra varius ligula tristique.
+					Duis tempus elit nunc, nec aliquet nunc rhoncus in vivamus.
+				</p>
+			</li>
+		</ul>
+		<hr class="divider" />
+		<div class="wrapper">
+			<img src="img/banner-05.jpg" class="left w60" />
+			<section class="left w40">
+				<header>
+					<h2>Perfect pair</h2>
+				</header>
+				<p class="fs-85">
+					Aliquam vestibulum pharetra nisl eu congue.
+					Quisque sed ipsum laoreet dui pharetra fermentum in non elit.
+					Nulla a elit diam. Fusce nec mollis lectus.
+				</p>
+			</section>
+		</div>
+		<hr class="divider" />
+		<section>
+			<header>
+				<h2>Posuere consectetur</h2>
+			</header>
+			<p class="fs-85 mb-10">
+				Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+				Aenean lacinia bibendum nulla sed consectetur. Donec id elit non mi porta gravida at eget metus.
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum.
+				Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+				Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean eu leo quam.
+			</p>
+			<figure class="wrapper">
+				<style>
+					#chairs .meter-line {
+						background-color: rgba(255,255,255,0.5)
+					}
+
+					#chairs .meter-value {
+						background-color: #a19492;
+						color: rgba(255,255,255,0.5)
+					}
+				</style>
+				<ul class="w50">
+					<li class="mt-10">
+						<p class="ma-0 fs-70 fw-6">Comfort</p>
+						<div class="meter-line"><span class="meter-value block pr-05 fs-70 fw-6 lh-10 ta-r" style="width: 80%">80%</span></div>
+					</li>
+					<li class="mt-10">
+						<p class="ma-0 fs-70 fw-6">Portability</p>
+						<div class="meter-line"><span class="meter-value block pr-05 fs-70 fw-6 lh-10 ta-r" style="width: 65%">65%</span></div>
+					</li>
+					<li class="mt-10">
+						<p class="ma-0 fs-70 fw-6">Design</p>
+						<div class="meter-line"><span class="meter-value block pr-05 fs-70 fw-6 lh-10 ta-r" style="width: 90%">90%</span></div>
+					</li>
+				</ul>
+			</figure>
+		</section>
+	</section>
+
+	<section id="comfort" class="pv-5p ph-10p">
+		<header>
+			<h2>Say hello to comfort</h2>
+		</header>
+		<p class="fs-85 mb-20 ta-j">
+			Praesent vel nisl malesuada, maximus enim in, egestas erat. Nunc non faucibus elit, sit amet faucibus dui.
+			Sed a mauris vitae nisi interdum molestie. Curabitur semper turpis a lorem consequat, eu suscipit ante commodo.
+			Phasellus vel risus et orci pharetra efficitur in eget nisi. Nullam aliquam tempor nisi, vitae laoreet ante sollicitudin quis.
+			Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam posuere odio a quam tempus aliquam.
+			Integer sagittis, orci vitae tempus dapibus, quam enim luctus tellus, ultrices sodales odio eros vitae justo.
+			Aenean dignissim mi id ex lacinia, ut luctus purus vehicula. Proin aliquam ornare sapien a vehicula.
+			Duis finibus mi sed ex laoreet pellentesque. Fusce dictum nulla sed sem aliquam fringilla.
+			Aenean sit amet ipsum at enim vestibulum dapibus. Aliquam id lacus eget leo tincidunt consectetur ut molestie dui.
+			Morbi eu sagittis dui.
+		</p>
+		<div class="wrapper">
+			<div class="left w40">
+				<img src="img/banner-07.jpg" class="w60" />
+				<p class="fs-85 ta-r">
+					Etiam pulvinar viverra leo in pellentesque. Integer vel neque euismod, maximus leo sed, vulputate velit.
+					Nunc interdum felis sed pulvinar fermentum. Duis hendrerit dolor nisl, et euismod velit tempor sit amet.
+					Etiam quis magna leo. Proin eget ligula a nibh varius cursus vel eu erat.
+				</p>
+			</div>
+			<img src="img/banner-08.jpg" class="right w60" />
+		</div>
+	</section>
+
+	<section id="luxurious" class="pt-5p ph-10p">
+		<style>
+			#luxurious {
+				background-color: #f1f0ed
+			}
+		</style>
+		<header>
+			<h2 class="ta-c">Luxurious shapes</h2>
+		</header>
+		<p class="fs-85 ta-j">
+			Interdum et malesuada fames ac ante ipsum primis in faucibus.
+			Sed condimentum dignissim ipsum euismod tempor. Curabitur libero velit, imperdiet quis neque tristique, condimentum ullamcorper massa.
+			Morbi quis diam pharetra, pulvinar sem at, vulputate tortor. Aliquam dignissim eu eros ut fermentum.
+			In hac habitasse platea dictumst. Suspendisse in libero lacinia, suscipit urna eget, faucibus magna.
+			Aenean vel volutpat tellus. Donec vel nisl eu ante scelerisque volutpat. In ac placerat elit, vitae pulvinar neque.
+			Vivamus pulvinar nulla at placerat imperdiet. Aenean bibendum erat sit amet tortor vehicula, sit amet consequat enim maximus.
+			Sed faucibus erat a pretium vestibulum. Pellentesque in dapibus enim. Mauris sed nisl in erat tempor rhoncus.
+		</p>
+		<img src="img/banner-09.jpg" class="w100" />
+	</section>
+
+	<section id="vulputate" class="wrapper">
+		<style>
+			#vulputate {
+				background-color: #f0e9dc
+			}
+		</style>
+		<div class="left w40 ph-5p pt-5p">
+			<header>
+				<h2 class="ta-r">Vulputate</h2>
+			</header>
+			<p class="fs-70 ta-r">
+				Nullam consequat orci metus. Proin suscipit diam arcu, non ullamcorper metus euismod et.
+				Fusce ut mi sollicitudin nibh vulputate tempor. Sed rhoncus nec orci vel tempus.
+				In volutpat facilisis tortor ut porttitor. In id bibendum enim. Integer ut egestas urna.
+			</p>
+		</div>
+		<img src="img/banner-10.jpg" class="right w60" />
+	</section>
+
+	<section id="master">
+		<style>
+			#master {
+				background-image: url(img/banner-11.jpg);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-attachment: fixed;
+			}
+
+				#master .wrapper {
+					background-color: rgba(255,255,255,0.2)
+				}
+
+					#master .wrapper * {
+						color: #f0e9dc
+					}
+		</style>
+		<div class="wrapper w50 ml-a pa-5p">
+			<header>
+				<h2 class="ta-l">100% Handmade</h2>
+			</header>
+			<p class="fs-70 ta-j">
+				Etiam consequat at velit in mattis. Nam ac hendrerit dolor.
+				Curabitur euismod et nulla non sollicitudin. Nullam at tincidunt ante.
+				Sed in diam non urna tincidunt convallis. Vivamus hendrerit semper augue eget tempus.
+				Suspendisse volutpat lacus sed est aliquet, sit amet scelerisque turpis volutpat.
+				Curabitur non quam et justo interdum condimentum. Sed accumsan vitae tortor at vulputate.
+				Phasellus egestas, tortor nec convallis bibendum, elit sapien sollicitudin ante, a commodo tortor purus nec urna.
+				In fringilla lacus quam, eu aliquam ipsum porttitor sit amet. Donec pharetra ex in egestas pulvinar.
+				Quisque nec purus tortor. Donec suscipit arcu quis libero sagittis hendrerit.
+			</p>
+		</div>
+	</section>
+
+	<section id="lighting" class="wrapper">
+		<style>
+			#lighting {
+				background-color: #d7d8d2
+			}
+		</style>
+		<img src="img/banner-12.jpg" class="left w40" />
+		<div class="right w60 pt-5p pr-5p">
+			<header>
+				<h2 class="ta-l">Custom lighting</h2>
+			</header>
+			<p class="fs-70 ta-j">
+				Donec egestas accumsan cursus. Suspendisse potenti.
+				Vestibulum commodo, erat nec ornare suscipit, lorem neque commodo neque, vulputate finibus sem tellus vitae lorem.
+				Nunc vitae felis ac sem consequat rhoncus non non eros.
+				Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus et ante massa.
+				Aliquam pharetra pretium lectus, non vehicula nunc semper eget.
+				Sed et commodo nulla. Nullam iaculis dui non metus ornare tristique.
+			</p>
+		</div>
+	</section>
+
+	<section id="vintange" class="wrapper">
+		<style>
+			#vintange {
+				background-color: #7c8281
+			}
+
+				#vintange * {
+					color: #f0e9dc
+				}
+
+				#vintange .right {
+					background-color: #959998
+				}
+		</style>
+		<div class="left w50 ph-5p pt-5p">
+			<header>
+				<h2 class="ta-r">Vintange</h2>
+			</header>
+			<p class="fs-70 ta-r">
+				In vel lacus non elit consectetur elementum vitae at ipsum.
+				Fusce eget tincidunt elit. Proin sit amet congue elit.
+				Nam ultricies quam ut diam varius.
+			</p>
+		</div>
+		<div class="right w50"><img src="img/banner-13.jpg" class="w50 mh-a" /></div>
+	</section>
+
+	<section id="lamp" class="pv-20p">
+		<style>
+			#lamp {
+				background-image: url(img/banner-15.png), url(img/banner-14.jpg);
+				background-repeat: no-repeat;
+				background-position: center top;
+				background-size: 30%, cover;
+				background-attachment: local, fixed;
+			}
+		</style>
+	</section>
+
+	<section id="quartet" class="wrapper">
+		<style>
+			#quartet {
+				background-color: #f0e9dc
+			}
+		</style>
+		<div class="left w50 ph-5p pt-5p">
+			<header>
+				<h2 class="ta-l">Quartet</h2>
+			</header>
+			<p class="fs-70">
+				Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+				Curabitur faucibus, tortor a convallis facilisis, est elit rutrum metus, in sagittis tellus sem sed turpis.
+			</p>
+		</div>
+		<figure class="wrapper">
+			<img src="img/banner-16.jpg" class="left w50" />
+			<img src="img/banner-17.jpg" class="left w50" />
+			<img src="img/banner-18.jpg" class="left w50" />
+			<img src="img/banner-19.jpg" class="left w50" />
+		</figure>
+	</section>
+
+	<section id="modern-interiors" class="wrapper">
+		<style>
+			#modern-interiors {
+				background-color: #bcb7b6;
+				color: #f0e9dc
+			}
+		</style>
+		<img src="img/banner-20.jpg" class="left w50" />
+		<div class="right w50 ph-5p pt-5p">
+			<header>
+				<h2>Modern interiors</h2>
+			</header>
+			<p class="fs-70">
+				Mauris sapien mauris, bibendum non tempor quis, semper nec felis. Nulla facilisi.
+				Pellentesque luctus, metus quis blandit dapibus, ipsum justo posuere augue, at ultricies ligula diam non mi.
+				Ut nec lorem vel libero efficitur interdum commodo a lectus.
+				Donec faucibus, elit et blandit eleifend, nisl turpis egestas lorem, in tincidunt neque diam non nisl.
+				Suspendisse sit amet tellus eros.
+			</p>
+		</div>
+		<figure class="wrapper clear">
+			<img src="img/banner-21.jpg" class="left w33" />
+			<img src="img/banner-22.jpg" class="left w33" />
+			<img src="img/banner-23.jpg" class="left w33" />
+		</figure>
+	</section>
+
+	<section id="reinvented-spaces">
+		<style>
+			#reinvented-spaces {
+				background-color: #e2ded4
+			}
+		</style>
+		<div class="ph-10p pt-5p">
+			<header>
+				<h2 class="ta-c">Reinvented Spaces</h2>
+			</header>
+			<p class="fs-85 w75 mh-a ta-j">
+				Curabitur tincidunt est at sapien cursus, ac accumsan est efficitur.
+				Vestibulum eleifend urna neque, a laoreet sapien gravida vel.
+				Donec eu ipsum placerat, tincidunt tellus ac, auctor lacus. Suspendisse at egestas mauris.
+				Proin ut pretium ipsum. Sed posuere orci nec nisl pretium ultrices.
+				Cras libero sem, luctus sit amet tempor eget, porttitor vel turpis.
+				Suspendisse sollicitudin malesuada risus id facilisis.
+				Morbi ac risus lectus. Donec vel mauris vitae risus iaculis pharetra.
+				Suspendisse fermentum lobortis dui, nec pharetra ex mattis id.
+				Donec vel enim mauris. Mauris nibh enim, lacinia vel mi eu, ultricies ornare felis.
+				Suspendisse laoreet risus quis tortor aliquet, efficitur dignissim dui pellentesque.
+				Etiam sagittis porttitor egestas. Curabitur sit amet consequat magna.
+			</p>
+		</div>
+		<img src="img/banner-24.jpg" class="w100" />
+	</section>
+
+	<section id="residential" class="wrapper">
+		<style>
+			#residential {
+				background-color: #f1e5d6
+			}
+		</style>
+		<div class="left w40 ph-5p pt-5p">
+			<header>
+				<h2 class="ta-r">Residential</h2>
+			</header>
+			<p class="fs-70 ta-r">
+				Morbi non risus vitae nulla semper placerat ut eu augue.
+				Mauris ante massa, congue ac convallis a, euismod id neque.
+				Pellentesque luctus sapien odio, ut venenatis tellus interdum ac.
+				Donec faucibus ultrices est, vel commodo nisi.
+			</p>
+		</div>
+		<img src="img/banner-25.jpg" class="right w60" />
+	</section>
+
+	<section id="business" class="wrapper">
+		<style>
+			#business {
+				background-color: #959998
+			}
+
+				#business * {
+					color: #f0e9dc
+				}
+		</style>
+		<img src="img/banner-26.jpg" class="left w60" />
+		<div class="right w40 ph-5p pt-5p">
+			<header>
+				<h2>Business</h2>
+			</header>
+			<p class="fs-70">
+				Curabitur scelerisque sollicitudin feugiat.
+				Nam eu leo sed orci volutpat dignissim nec sed dui.
+				Vivamus et quam placerat, suscipit libero et, tempus neque.
+				Phasellus porttitor nisl sapien, sit amet varius justo pellentesque vel.
+				Fusce imperdiet euismod enim, molestie mattis ex cursus a.
+			</p>
+		</div>
+	</section>
+</div>
+</body>
+</html>
